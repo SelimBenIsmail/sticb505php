@@ -1,0 +1,14 @@
+#formulaire {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+}
+
+form:not(.bouton) {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    line-height: 24px;
+    max-width: 300px;
+}
