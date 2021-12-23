@@ -11,7 +11,7 @@
 <header>
     <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-        <a href="/php/stic-b-505/index.php"> <span class="navbar-brand mb-0 h1" (click)="home()">  STIC-B505 </span></a>
+        <a href="/php/stic-b-505/index.php"> <span class="navbar-brand mb-0 h1" ">  STIC-B505 </span></a>
         <span> <strong> Déclaration d'activité des centres de vacances et demande de subside auprès de l'ONE </strong> </span>
         <span> [ Utilisateur authentifié ]</span>
     </div>

@@ -14,8 +14,11 @@ body {
 }
 button>a,button>a:hover {
     color:white;
-
 }
+a>button,a>button:hover {
+    color:white;
+}
+
 a {
     text-decoration: none;
 }

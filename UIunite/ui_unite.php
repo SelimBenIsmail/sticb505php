@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="../style/style.css">
     <title>  STIC-B-505 </title>
 </head>
 <header>
     <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-        <a href="/php/stic-b-505/index.php"> <span class="navbar-brand mb-0 h1">  STIC-B505 </span></a>
+        <a href="../index.php"> <span class="navbar-brand mb-0 h1">  STIC-B505 </span></a>
         <span> <strong> Déclaration d'activité des centres de vacances et demande de subside auprès de l'ONE </strong> </span>
         <span> [ Utilisateur authentifié ]</span>
     </div>
@@ -39,7 +39,7 @@
             <div class="col-1"></div>
             <div class="col-3">
                 <div>
-                    <button class="btn btn-secondary"><a routerLink="unite">Modifier les informations de l'unité</a> </button>
+                    <button class="btn btn-secondary"><a href="/php/stic-b-505/UIunite/unite_details.php ">Modifier les informations de l'unité</a> </button>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="col-1"></div>
             <div class="col">
                 <div>
-                    <button class="btn btn-primary"><a routerLink="camp">Déclarer un camp</a> </button>
+                    <button class="btn btn-primary"><a href="formulaire.php">Déclarer un camp</a> </button>
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
                     <li class="list-group-item" *ngFor="let item of getDataCamps()"> 
                         {{item.NumDossier}} | {{item.Denomination}} | {{item.DateDeclaration}} 
                         <span style="margin-left: 3cm;"></span>
-                        <button class="btn btn-secondary btn-sm"> <a routerLink="">Voir</a></button>
+                        <button class="btn btn-secondary btn-sm"> <a href="./reponse.php">Voir</a></button>
                     </li>
                 </ul>
             </div>
