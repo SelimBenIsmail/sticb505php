@@ -38,8 +38,8 @@ CREATE TABLE  unite  (
 
 CREATE TABLE  responsable_unite  (
     niss  varchar(255) PRIMARY KEY NOT NULL,
-    nom  varchar(255),
     prenom  varchar(255),
+    nom  varchar(255),
     email  varchar(255),
     telephone varchar(255),
     id_adresse  int,
@@ -48,7 +48,7 @@ CREATE TABLE  responsable_unite  (
     FOREIGN KEY ( num_agrement_unite ) REFERENCES  unite  ( numero_agrement ) ON DELETE CASCADE
 );
 
-CREATE TABLE  agentONE  (
+CREATE TABLE  agent_one  (
     niss  varchar(255) PRIMARY KEY NOT NULL,
     prenom  varchar(255),
     nom  varchar(255),

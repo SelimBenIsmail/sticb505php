@@ -78,12 +78,7 @@
                         <span style="margin-left: 2%;"></span>
                         <label for="undersix">Présence d'enfant de moins de 6 ans </label>
 
-                    </div>
-                    <div class="col-3">
-                        <input class="form-check-input" type="checkbox" value="" id="ebs">
-                        <span style="margin-left: 2%;"></span>
-                        <label for="ebs">Présence d'enfant à besoin spécifique </label>
-                    </div>
+                    </div>>
                 </div>
                 <p></p>
                 <div class="row">
