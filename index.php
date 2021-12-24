@@ -1,6 +1,7 @@
-<?php session_start();?>
+<?php //session_destroy()?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,49 +26,51 @@
 <body>
 
     <div class="container" style="margin-top:10em;">
-        <div class="row"></div>
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="Denomination"> Connexion responsable d'unité </label>
-                    <select class="form-select" aria-label="Default select example">
-                    <?php
-                        
-                        $sqlQuery = 'SELECT niss, nom, prenom FROM responsable_unite';
-                        $responsablesUnite = $pdo->prepare($sqlQuery);
-                        $responsablesUnite->execute();
-                        $result = $responsablesUnite->fetchAll();
-                        foreach ($result as $item ) {
-                            echo "<option value='$item[niss]'> $item[nom]"." "."$item[prenom] </option>";
-                        }
-                    ?>
-                    </select>
-                </div>
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <form action="/php/stic-b-505/UIunite/ui_unite.php" method="post">
+                    <div class="form-group">
+                        <label for="Denomination"> Connexion responsable d'unité </label>
+                        <select class="form-select" name="uniteLogIn" >
+                            <?php
+                            $sqlQuery = 'SELECT niss, nom, prenom FROM responsable_unite';
+                            $responsablesUnite = $pdo->prepare($sqlQuery);
+                            $responsablesUnite->execute();
+                            $result = $responsablesUnite->fetchAll();
+                            echo "<option selected> </option>";
+                            foreach ($result as $item) {
+                                echo "<option value='$item[niss]'> $item[nom]" . " " . "$item[prenom] </option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary"> login </button> 
+                </form>
             </div>
 
-            <a href="/php/stic-b-505/UIunite/ui_unite.php"> <button class="btn btn-primary"> login </button> </a>
-            <div class="col"></div>
-            <div class="col">
-                <div class="form-group">
-                <label for="Denomination"> Connexion agent ONE </label>
-                <select class="form-select" aria-label="Default select example">
-                    <?php
-                        $sqlQuery = 'SELECT niss, nom, prenom FROM agent_one';
-                        $agentsOne = $pdo->prepare($sqlQuery);
-                        $agentsOne->execute();
-                        $result = $agentsOne->fetchAll();
-                        foreach ($result as $item ) {
-                            echo "<option value='$item[niss]'> $item[nom]"." "."$item[prenom] </option>";
-                        }
-                    ?>
-                </select>
-                </div>
-             
+
+            <div class="col-2"></div>
+            <div class="col-2">
+                <form action="/php/stic-b-505/UIone/ui_one.php" method="post">
+                    <div class="form-group">
+                        <label for="Denomination"> Connexion agent ONE </label>
+                        <select class="form-select" name="oneLogIn">
+                            <?php
+                            $sqlQuery = 'SELECT niss, nom, prenom FROM agent_one';
+                            $agentsOne = $pdo->prepare($sqlQuery);
+                            $agentsOne->execute();
+                            $result = $agentsOne->fetchAll();
+                            echo "<option selected> </option>";
+                            foreach ($result as $item) {
+                                echo "<option value='$item[niss]'> $item[nom]" . " " . "$item[prenom] </option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary"> login </button>
+                </form>
             </div>
-            <a href="/php/stic-b-505/UIone/ui_one.php"> <button class="btn btn-primary"> login </button> </a>
         </div>
-
-    </div>
     </div>
 
 

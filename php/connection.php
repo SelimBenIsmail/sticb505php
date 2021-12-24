@@ -6,7 +6,7 @@
     {
         // On se connecte à MySQL
         $pdo = new PDO('mysql:host='.$host.';dbname=STICB505;charset=utf8', $username,$password);
-        echo '[ connection établie ]';
+        //echo '[ connection établie ]';
     }
     catch(Exception $e)
     {
