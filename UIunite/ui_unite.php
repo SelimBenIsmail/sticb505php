@@ -12,6 +12,7 @@
 <header>
     <?php
     include_once '../php/function.php';
+    session_start();
     include '../php/connection.php';
     ?>
     <nav class="navbar navbar-light bg-light">
@@ -41,7 +42,8 @@
                     <?php
                     if (isset($_SESSION['userLogged'])) {
 
-                        $sqlQuery = "SELECT numero_agrement, denomination,id_federation_mouvement_jeunesse FROM unite WHERE numero_agrement = (SELECT num_agrement_unite FROM responsable_unite WHERE niss = $_SESSION[userLogged]) ";
+                        $sqlQuery = "SELECT numero_agrement, denomination,id_federation_mouvement_jeunesse FROM unite WHERE numero_agrement = (
+                            SELECT num_agrement_unite FROM responsable_unite WHERE niss = $_SESSION[userLogged]) ";
                         $infoUnite = $pdo->prepare($sqlQuery);
                         $infoUnite->execute();
                         $result = $infoUnite->fetch();
@@ -52,13 +54,7 @@
                         $infoUnite->execute();
                         $result = $infoUnite->fetch();
                         $_SESSION['userFederationDenomination']=$result['denomination'];
-
-
-                        echo <<<HEREDOC
-                                <p class="lead"> <strong>Dénomination : </strong> $_SESSION[userUniteDenomination]</p>
-                                <p class="lead"> <strong>Numéro d'agrémentation : </strong> $_SESSION[userUniteNum] </p>
-                                <p class="lead"> <strong>Fédération : </strong>  $_SESSION[userFederationDenomination] </p>
-HEREDOC;
+                        echo " <p class='lead'> <strong>Dénomination : </strong> $_SESSION[userUniteDenomination]</p><p class='lead'> <strong>Numéro d'agrémentation : </strong> $_SESSION[userUniteNum] </p><p class='lead'> <strong>Fédération : </strong>  $_SESSION[userFederationDenomination] </p>";
                     }
                     ?>
 
@@ -104,7 +100,6 @@ HEREDOC;
                     $result = $listeCamps->fetchAll();
                     foreach ($result as $item) {
                         //echo " <li class='list-group-item'> $_SESSION[userUniteNum] </li>";
-                        
                         echo "<li class='list-group-item'>" . $item['numero_dossier'] . " | " . $item['date_declaration'] . " | " . $item['denomination'] . "<span style='margin-left: 2cm;'></span> <button class='btn btn-secondary btn-sm'> <a href='./reponse.php'>Voir</a></button> </li>";
                         
                     }

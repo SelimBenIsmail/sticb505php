@@ -10,11 +10,22 @@
     <title> STIC-B-505 </title>
 </head>
 <header>
+    <?php
+    include_once '../php/function.php';
+    include '../php/connection.php';
+    ?>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <a href="../index.php"> <span class="navbar-brand mb-0 h1"> STIC-B505 </span></a>
             <span> <strong> Déclaration d'activité des centres de vacances et demande de subside auprès de l'ONE </strong> </span>
-            <span> [ Utilisateur authentifié ]</span>
+            <span>
+                <?php
+                include_once '../php/session.php';
+                if (isset($_SESSION['userLogged'])) {
+                    echo getName("$_SESSION[userLogged]", "agent_one");
+                } else echo "Session vide";
+                ?>
+            </span>
         </div>
     </nav>
 
@@ -35,12 +46,28 @@
             <div class="col-1"></div>
             <div class="col-auto">
                 <ul class="list-group">
-                    <a href="./susbside_details.php">
-                        <li class="list-group-item" *ngFor="let item of getDataSubside()">
-                            <h5> {{item.NumDossier}} | {{item.DateDemande}} | {{item.Statut}} </h5>
-                            <p></p>
-                        </li>
-                    </a>
+                <?php
+                    if (isset($_SESSION['userLogged'])) {
+                        
+                        $sqlQuery = "SELECT attribution FROM agent_one WHERE niss = $_SESSION[userLogged]";
+                        $infoONE = $pdo->prepare($sqlQuery);
+                        $infoONE->execute();
+                        $result = $infoONE->fetch();
+                        $_SESSION['userOneAttribution']=$result['attribution'];}
+
+                        $sqlQuery = "SELECT  numero_dossier, date_demande, statut FROM demande_subside WHERE  numero_dossier = (
+                            SELECT numero_dossier FROM camp WHERE num_agrement_unite=(
+                                SELECT numero_agrement FROM unite WHERE id_federation_mouvement_jeunesse = (
+                                    SELECT id FROM federation_mouvement_jeunesse WHERE id= $_SESSION[userOneAttribution])))";
+                        $demandes = $pdo->prepare($sqlQuery);
+                        $demandes->execute();
+                        $result = $demandes->fetchAll();
+                        foreach ($result as $item) {
+                            echo " <a href='./susbside_details.php'> <li class='list-group-item'>" . $item['numero_dossier'] . " | " . $item['date_demande'] . " | " . $item['statut']."</li> </a>";
+                            
+                    }
+                ?>
+
                 </ul>
             </div>
         </div>

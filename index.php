@@ -1,4 +1,8 @@
-<?php //session_destroy()?>
+<?php 
+if(session_id()){
+    session_destroy();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

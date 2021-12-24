@@ -1,8 +1,6 @@
 <?php
 
 
-
-
 function getName (string $niss, string $table)
 {
     include 'connection.php';
@@ -14,5 +12,4 @@ function getName (string $niss, string $table)
         return $result = $result['nom']." ".$result['prenom'];
     }  
 }
-
 ?>
