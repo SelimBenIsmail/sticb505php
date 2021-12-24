@@ -29,11 +29,11 @@ INSERT INTO responsable_unite  VALUES ('91033334976','Diego', 'Coussemens','Dieg
 INSERT INTO responsable_unite  VALUES ('94401134976','Yolan', 'Minlend','Yolan.Minlend@mail.com','0471276267',3,104);
 INSERT INTO responsable_unite  VALUES ('91555134976','Elise', 'Crouan','Elise.Crouan@mail.com','0471276267',3,105);
 
-INSERT INTO agentONE  VALUES ('91013334976','Mathias', 'ista','ista@mail.com','0471276267',1);
-INSERT INTO agentONE  VALUES ('94421139976','Ozzy', 'Dardenne','Ozzy@mail.com','0471276267',2);
-INSERT INTO agentONE  VALUES ('91553174976','Nicolas', 'Labbe','Labbe@mail.com','0471276267',3);
-INSERT INTO agentONE  VALUES ('94678134976','Rejane', 'Hulet','Ozzy@mail.com','0471276267',4);
-INSERT INTO agentONE  VALUES ('91553134976','Thomas', 'Janzyk','Labbe@mail.com','0471276267',5);
+INSERT INTO agent_one  VALUES ('91013334976','Mathias', 'ista','ista@mail.com','0471276267',1);
+INSERT INTO agent_one  VALUES ('94421139976','Ozzy', 'Dardenne','Ozzy@mail.com','0471276267',2);
+INSERT INTO agent_one  VALUES ('91553174976','Nicolas', 'Labbe','Labbe@mail.com','0471276267',3);
+INSERT INTO agent_one  VALUES ('94678134976','Rejane', 'Hulet','Ozzy@mail.com','0471276267',4);
+INSERT INTO agent_one  VALUES ('91553134976','Thomas', 'Janzyk','Labbe@mail.com','0471276267',5);
 
 INSERT INTO camp VALUES (1,'Castors - Kinga','2021-03-01',90, '2021-03-11','2021-03-21',FALSE,101,1);
 INSERT INTO camp VALUES (2,'Louveteaux - Kinga','2021-04-01',90,'2021-04-11','2021-04-21',FALSE,102,2);
