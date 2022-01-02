@@ -1,6 +1,6 @@
+<?php include_once '../php/session.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,6 @@
 <header>
     <?php
     include_once '../php/function.php';
-    session_start();
     include '../php/connection.php';
     ?>
     <nav class="navbar navbar-light bg-light">
@@ -21,9 +20,8 @@
             <span> <strong> Déclaration d'activité des centres de vacances et demande de subside auprès de l'ONE </strong> </span>
             <span>
                 <?php
-                include_once '../php/session.php';
                 if (isset($_SESSION['userLogged'])) {
-                    echo getName("$_SESSION[userLogged]", "responsable_unite");
+                    echo "$_SESSION[userFname] $_SESSION[userName]";
                 } else echo "Session vide";
                 ?>
             </span>
@@ -41,20 +39,7 @@
                 <div class="jumbotron">
                     <?php
                     if (isset($_SESSION['userLogged'])) {
-
-                        $sqlQuery = "SELECT numero_agrement, denomination,id_federation_mouvement_jeunesse FROM unite WHERE numero_agrement = (
-                            SELECT num_agrement_unite FROM responsable_unite WHERE niss = $_SESSION[userLogged]) ";
-                        $infoUnite = $pdo->prepare($sqlQuery);
-                        $infoUnite->execute();
-                        $result = $infoUnite->fetch();
-                        $_SESSION['userUniteDenomination']=$result['denomination'];
-                        $_SESSION['userUniteNum']=$result['numero_agrement'];
-                        $sqlQuery = "SELECT denomination FROM federation_mouvement_jeunesse WHERE id = $result[id_federation_mouvement_jeunesse] ";
-                        $infoUnite = $pdo->prepare($sqlQuery);
-                        $infoUnite->execute();
-                        $result = $infoUnite->fetch();
-                        $_SESSION['userFederationDenomination']=$result['denomination'];
-                        echo " <p class='lead'> <strong>Dénomination : </strong> $_SESSION[userUniteDenomination]</p><p class='lead'> <strong>Numéro d'agrémentation : </strong> $_SESSION[userUniteNum] </p><p class='lead'> <strong>Fédération : </strong>  $_SESSION[userFederationDenomination] </p>";
+                        echo " <p class='lead'> <strong>Dénomination : </strong> $_SESSION[userUniteDenom]</p><p class='lead'> <strong>Numéro d'agrémentation : </strong> $_SESSION[userUniteNum] </p><p class='lead'> <strong>Fédération : </strong>  $_SESSION[userFedDenom] </p>";
                     }
                     ?>
 
@@ -66,8 +51,12 @@
             <div class="col-1"></div>
             <div class="col-3">
                 <div>
-                    <button class="btn btn-secondary"><a href="/php/stic-b-505/UIunite/unite_details.php " disable>Modifier les informations de l'unité</a> </button>
-                </div>
+                <?php
+                    if (isset($_SESSION['userLogged'])) {
+                        echo "<button class='btn btn-secondary'><a href='/php/stic-b-505/UIunite/unite_details.php'> Modifier les informations de l'unité</a> </button>";
+                    }
+                ?>
+                    </div>
             </div>
         </div>
         <p></p>
@@ -82,9 +71,11 @@
         <div class="row">
             <div class="col-1"></div>
             <div class="col">
-                <div>
-                    <button class="btn btn-primary"><a href="formulaire.php">Déclarer un camp</a> </button>
-                </div>
+            <?php
+            if (isset($_SESSION['userLogged'])){
+                echo "<div><button class='btn btn-primary'><a href='formulaire.php'>Déclarer un camp</a> </button></div>";
+            }
+            ?>
             </div>
         </div>
         <p></p>
@@ -94,16 +85,16 @@
                 <ul class="list-group">
 
                     <?php
-                    $sqlQuery = "SELECT numero_dossier, date_declaration, denomination  FROM camp where num_agrement_unite = $_SESSION[userUniteNum] ";
-                    $listeCamps = $pdo->prepare($sqlQuery);
-                    $listeCamps->execute();
-                    $result = $listeCamps->fetchAll();
-                    foreach ($result as $item) {
-                        //echo " <li class='list-group-item'> $_SESSION[userUniteNum] </li>";
-                        echo "<li class='list-group-item'>" . $item['numero_dossier'] . " | " . $item['date_declaration'] . " | " . $item['denomination'] . "<span style='margin-left: 2cm;'></span> <button class='btn btn-secondary btn-sm'> <a href='./reponse.php'>Voir</a></button> </li>";
-                        
+                    if (isset($_SESSION['userLogged'])){
+                        $sqlQuery = "SELECT numero_dossier, date_declaration, denomination  FROM camp where num_agrement_unite = $_SESSION[userUniteNum] ";
+                        $listeCamps = $pdo->prepare($sqlQuery);
+                        $listeCamps->execute();
+                        $result = $listeCamps->fetchAll();
+                        foreach ($result as $item) {
+                            echo "<li class='list-group-item'>" . $item['numero_dossier'] . " | " . $item['date_declaration'] . " | " . $item['denomination'] . "<span style='margin-left: 2cm;'></span> <button class='btn btn-secondary btn-sm'> <a href='./reponse.php'>Voir</a></button> </li>";
+                            
+                        }
                     }
-
                     ?>
                 </ul>
             </div>

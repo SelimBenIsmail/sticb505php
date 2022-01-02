@@ -9,28 +9,8 @@
     <link rel="stylesheet" href="../style/style.css">
     <title> STIC-B-505 </title>
 </head>
-<header>
-    <?php
-    include_once '../php/function.php';
-    include '../php/connection.php';
-    ?>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a href="../index.php"> <span class="navbar-brand mb-0 h1"> STIC-B505 </span></a>
-            <span> <strong> Déclaration d'activité des centres de vacances et demande de subside auprès de l'ONE </strong> </span>
-            <span>
-                <?php
-                session_start();
-                if (isset($_SESSION['userLogged'])) {
-                    echo getName("$_SESSION[userLogged]", "responsable_unite");
-                } else echo "Session vide";
-                ?>
-            </span>
-        </div>
-    </nav>
 
-</header>
-
+<?php include '../header.php'; ?>
 
 <body>
     <div class="container-fluid">
@@ -131,6 +111,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php 
+                                if (isset($_SESSION['userLogged'])) {                           
+                                    $sqlQuery = "SELECT *  FROM encadrant_camp WHERE  ";
+                                    $list = $pdo->prepare($sqlQuery);
+                                    $list->execute();
+                                    $result = $list->fetchAll();
+                                    foreach ($result as $item) 
+                                        echo " <a href='./susbside_details.php'> <li class='list-group-item'>" . $item['num_dos'] . " | " . $item['date_demande'] . " | " . $item['statut']."</li> </a>";                                
+                                }
+                            ?>
                             <tr>
                                 <td>91081634911</td>
                                 <td>Ben Ismail</td>
@@ -158,9 +148,7 @@
                 </div>
             </div>
             <p></p>
-
         </form>
-
         <div class="row">
             <div class="col-1"></div>
             <div class="col">
@@ -169,9 +157,7 @@
             <div class="col-1"></div>
         </div>
         <p></p>
-
         <form>
-
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-auto">
@@ -227,10 +213,8 @@
             </div>
             <p></p>
             <div style="height: 1cm;"></div>
-
         </form>
     </div>
-
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

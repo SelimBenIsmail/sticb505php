@@ -53,3 +53,43 @@ INSERT INTO decision (numero_dossier, statut, id_agent_traitant) VALUES (3,'Non 
 INSERT INTO decision (numero_dossier, statut, id_agent_traitant) VALUES (4,'Non traité','94678134976');
 INSERT INTO decision (numero_dossier, statut, id_agent_traitant) VALUES (5,'Non traité','91553134976');
 
+INSERT INTO enfant_camp VALUES (1,'91081634978');
+INSERT INTO enfant_camp VALUES (1,'91081634976');
+INSERT INTO enfant_camp VALUES (1,'91081634977');
+
+INSERT INTO enfant_camp VALUES (2,'91081634978');
+INSERT INTO enfant_camp VALUES (2,'91081634976');
+INSERT INTO enfant_camp VALUES (2,'91081634977');
+
+INSERT INTO enfant_camp VALUES (3,'91081634978');
+INSERT INTO enfant_camp VALUES (3,'91081634976');
+INSERT INTO enfant_camp VALUES (3,'91081634977');
+
+INSERT INTO enfant_camp VALUES (4,'91081634978');
+INSERT INTO enfant_camp VALUES (4,'91081634976');
+INSERT INTO enfant_camp VALUES (4,'91081634977');
+
+INSERT INTO enfant_camp VALUES (5,'91081634978');
+INSERT INTO enfant_camp VALUES (5,'91081634976');
+INSERT INTO enfant_camp VALUES (5,'91081634977');
+
+INSERT INTO encadrant_camp VALUES (1,'91081631178');
+INSERT INTO encadrant_camp VALUES (1,'91081134976');
+INSERT INTO encadrant_camp VALUES (1,'11081634977');
+
+INSERT INTO encadrant_camp VALUES (2,'91081631178');
+INSERT INTO encadrant_camp VALUES (2,'91081134976');
+INSERT INTO encadrant_camp VALUES (2,'11081634977');
+
+INSERT INTO encadrant_camp VALUES (3,'91081631178');
+INSERT INTO encadrant_camp VALUES (3,'91081134976');
+INSERT INTO encadrant_camp VALUES (3,'11081634977');
+
+INSERT INTO encadrant_camp VALUES (4,'91081631178');
+INSERT INTO encadrant_camp VALUES (4,'91081134976');
+INSERT INTO encadrant_camp VALUES (4,'11081634977');
+
+INSERT INTO encadrant_camp VALUES (5,'91081631178');
+INSERT INTO encadrant_camp VALUES (5,'91081134976');
+INSERT INTO encadrant_camp VALUES (5,'11081634977');
+

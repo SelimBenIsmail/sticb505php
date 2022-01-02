@@ -2,12 +2,10 @@
     session_start();
     include 'connection.php';
 
-    //if (isset($_POST['submitNewCamp']))
-   // {
+    if (isset($_POST['submitNewCamp']))
+    {
 
         $postData = $_POST;
-
-
         $postRue=$postData['Rue'];
         $postRueNum=$postData['Numero'];
         $postCodePostal=$postData['CodePostal'];
@@ -39,7 +37,7 @@
             'num_agrement_unite'=>"$postnumAgrementUnite"
         ]);
 
-   // }	
+    }	
 
 ?>
 <meta http-equiv="refresh" content="1; url=<?php echo $_SERVER["HTTP_REFERER"]  ; ?>" />

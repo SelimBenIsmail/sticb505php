@@ -11,6 +11,7 @@
 </head>
 <header>
     <?php
+    include_once '../php/session.php';
     include_once '../php/function.php';
     include '../php/connection.php';
     ?>
@@ -20,20 +21,17 @@
             <span> <strong> Déclaration d'activité des centres de vacances et demande de subside auprès de l'ONE </strong> </span>
             <span>
                 <?php
-                include_once '../php/session.php';
                 if (isset($_SESSION['userLogged'])) {
-                    echo getName("$_SESSION[userLogged]", "agent_one");
+                    echo "$_SESSION[userFname] $_SESSION[userName]";
                 } else echo "Session vide";
                 ?>
             </span>
         </div>
     </nav>
-
 </header>
 
 <body>
     <div class="container-fluid">
-
         <p></p>
         <div class="row">
             <div class="col-1"></div>
@@ -46,32 +44,25 @@
             <div class="col-1"></div>
             <div class="col-auto">
                 <ul class="list-group">
-                <?php
-                    if (isset($_SESSION['userLogged'])) {
-                        
-                        $sqlQuery = "SELECT attribution FROM agent_one WHERE niss = $_SESSION[userLogged]";
-                        $infoONE = $pdo->prepare($sqlQuery);
-                        $infoONE->execute();
-                        $result = $infoONE->fetch();
-                        $_SESSION['userOneAttribution']=$result['attribution'];}
-
-                        $sqlQuery = "SELECT  numero_dossier, date_demande, statut FROM demande_subside WHERE  numero_dossier = (
-                            SELECT numero_dossier FROM camp WHERE num_agrement_unite=(
-                                SELECT numero_agrement FROM unite WHERE id_federation_mouvement_jeunesse = (
-                                    SELECT id FROM federation_mouvement_jeunesse WHERE id= $_SESSION[userOneAttribution])))";
-                        $demandes = $pdo->prepare($sqlQuery);
-                        $demandes->execute();
-                        $result = $demandes->fetchAll();
-                        foreach ($result as $item) {
-                            echo " <a href='./susbside_details.php'> <li class='list-group-item'>" . $item['numero_dossier'] . " | " . $item['date_demande'] . " | " . $item['statut']."</li> </a>";
-                            
-                    }
-                ?>
-
+                    <?php
+                        if (isset($_SESSION['userLogged'])) {                           
+                            $sqlQuery = " SELECT demande_subside.numero_dossier AS num_dos, date_demande, statut
+                            FROM demande_subside
+                            INNER JOIN camp ON demande_subside.numero_dossier = camp.numero_dossier
+                            INNER JOIN unite ON camp.num_agrement_unite = unite.numero_agrement
+                            INNER JOIN federation_mouvement_jeunesse ON unite.id_federation_mouvement_jeunesse = federation_mouvement_jeunesse.id 
+                            INNER JOIN agent_one ON federation_mouvement_jeunesse.id =agent_one.attribution
+                            WHERE niss = $_SESSION[userLogged]";
+                            $list = $pdo->prepare($sqlQuery);
+                            $list->execute();
+                            $result = $list->fetchAll();
+                            foreach ($result as $item) 
+                                echo " <a href='./susbside_details.php'> <li class='list-group-item'>" . $item['num_dos'] . " | " . $item['date_demande'] . " | " . $item['statut']."</li> </a>";                                
+                        }
+                    ?>
                 </ul>
             </div>
         </div>
-
     </div>
 
 

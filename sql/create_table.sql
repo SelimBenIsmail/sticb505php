@@ -1,3 +1,5 @@
+CREATE DATABASE STICB505
+
 CREATE TABLE  adresse  (
     id_adresse  int PRIMARY KEY NOT NULL AUTO_INCREMENT,
     rue  varchar(255) NOT NULL,
