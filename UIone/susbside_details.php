@@ -9,27 +9,7 @@
     <link rel="stylesheet" href="../style/style.css">
     <title> STIC-B-505 </title>
 </head>
-<header>
-    <?php
-    include_once '../php/function.php';
-    include '../php/connection.php';
-    ?>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a href="../index.php"> <span class="navbar-brand mb-0 h1"> STIC-B505 </span></a>
-            <span> <strong> Déclaration d'activité des centres de vacances et demande de subside auprès de l'ONE </strong> </span>
-            <span>
-                <?php
-                session_start();
-                if (isset($_SESSION['userLogged'])) {
-                    echo getName("$_SESSION[userLogged]", "agent_one");
-                } else echo "Session vide";
-                ?>
-            </span>
-        </div>
-    </nav>
-
-</header>
+<?php include '../header.php' ?>
 <body>
     <div class="container-fluid">
 

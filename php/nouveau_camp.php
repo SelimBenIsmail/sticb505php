@@ -4,14 +4,11 @@
 
     if (isset($_POST['submitNewCamp']))
     {
-
         $postData = $_POST;
         $postRue=$postData['Rue'];
         $postRueNum=$postData['Numero'];
         $postCodePostal=$postData['CodePostal'];
         $postCommune=$postData['Commune'];
-
-
         $postDenom=$postData['Denomination'];
         $postDateDeclaration= date("Y-m-d") ;
         $postFrais=$postData['frais'];
@@ -36,8 +33,7 @@
             'presence_enfant_moins_6_ans'=>"$postEnfantBasAge",
             'num_agrement_unite'=>"$postnumAgrementUnite"
         ]);
-
     }	
 
 ?>
-<meta http-equiv="refresh" content="1; url=<?php echo $_SERVER["HTTP_REFERER"]  ; ?>" />
+<meta http-equiv="refresh" content="1; url=../UIunite/liste_encadrants.php" /> 
