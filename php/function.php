@@ -20,7 +20,7 @@ function countEnfant(){
     $operation = $pdo->prepare($sqlQuery);
     $operation->execute();
     $result = $operation ->fetch();  
-    if(isset($result))return $result;
+    if(isset($result))return $result['COUNT(*)'];
 }
 
 function countEncadrant(){
@@ -29,7 +29,7 @@ function countEncadrant(){
     $operation = $pdo->prepare($sqlQuery);
     $operation->execute();
     $result = $operation ->fetch();  
-    if(isset($result))return $result;
+    if(isset($result))return $result['COUNT(*)'];
 }
 
 ?>

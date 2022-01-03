@@ -1,6 +1,7 @@
-<?php session_start()?>
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,9 +29,9 @@
                 <div class="col-1"></div>
                 <div class="col-auto">
                     <div class="jumbotron">
-                        <p class="lead"> <strong>Numero de Dossier : </strong> <?php echo $_SESSION['numDos']?> </p>
-                        <p class="lead"> <strong>Nombre d'enfant : </strong> <?php echo countEnfant()?></p>
-                        <p class="lead"> <strong>Nombre d'encadrants : </strong> <?php echo countEncadrant()?></p>
+                        <p class="lead"> <strong>Numero de Dossier : </strong> <?php echo $_SESSION['numDos'] ?> </p>
+                        <p class="lead"> <strong>Nombre d'enfant : </strong> <?php echo countEnfant() ?></p>
+                        <p class="lead"> <strong>Nombre d'encadrants : </strong> <?php echo countEncadrant() ?></p>
                     </div>
                 </div>
             </div>
@@ -49,12 +50,6 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr >
-                                <td>{{item.NumNat}}</td>
-                                <td>{{item.Nom}}</td>
-                                <td>{{item.Prenom}}</td>
-                                <td>{{item.DateNaissance}}</td>
-                            </tr>
                             <?php
                             if (isset($_SESSION['userLogged'])) {
                                 $sqlQuery = "SELECT enfant.niss AS niss, enfant.nom AS nom, enfant.prenom AS prenom, enfant.date_naissance AS ddn
@@ -76,27 +71,27 @@
                             }
                             ?>
                             <tr>
-                                <td> <input type="text" class="form-control" name="input_niss" id="" placeholder="NISS..."> </td>
-                                <td><input type="text" class="form-control" name="input_nom" id="" placeholder="Nom ..."></td>
-                                <td><input type="text" class="form-control" name="input_prenom" id="" placeholder="Prénom ..."></td>
-                                <td><input type="text" class="form-control" name="input_ddn" id="" placeholder="jj-mm-aaaa..."></td>
-                                <td> <button class="btn btn-secondary btn-sm"> Ajouter </button> </td>
+                                <td> <input type="text" class="form-control" name="input_niss" id="input_niss" placeholder="NISS..."> </td>
+                                <td><input type="text" class="form-control" name="input_nom" id="input_nom" placeholder="Nom ..."></td>
+                                <td><input type="text" class="form-control" name="input_prenom" id="input_prenom" placeholder="Prénom ..."></td>
+                                <td><input type="text" class="form-control" name="input_ddn" id="input_ddn" placeholder="aaaa-mm-jj..."></td>
+                                <td> <button class="btn btn-secondary btn-sm" name="add_enfant"> Ajouter </button> </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
-            <div class="row">
-                <div class="col-10"></div>
-                <div class="col">
-                    <button type="submit" class="btn btn-primary"> <a href="./ui_unite.php">Submit</a></button>
-                </div>
-            </div>
         </form>
+        <div class="row">
+        <div class="col-10"></div>
+            <form action="../php/submit_demande_subside.php" method="POST">
+            <div class="col">
+                <button type="submit" class="btn btn-primary" name="submit_subside">Submit</button>
+            </div>
+            </form>
+        </div>
     </div>
     <?php include '../jquery.php' ?>
-   </body>
+</body>
 
 </html>

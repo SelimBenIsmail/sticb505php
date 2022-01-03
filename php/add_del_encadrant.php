@@ -11,7 +11,7 @@ if(isset($_POST['add_encadrant'])){
     $postData['input_experience']=="TRUE" ? $postExperience= 1 : $postExperience=0;
     $postNumDos= $_SESSION['numDos'] ;
 
-foreach ($postData as $item) echo $item." ";
+//foreach ($postData as $item) echo $item." ";
     $sqlQuery= "INSERT INTO encadrant (niss,nom,prenom,brevet,experience)
         VALUES (:niss, :nom,:prenom,:brevet,:experience)";
 

@@ -1,4 +1,4 @@
-<?php session_start()?>
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +96,7 @@
     </div>
     </form>
     </div>
-<?php include '../jquery.php' ?>
+    <?php include '../jquery.php' ?>
 </body>
 
 </html>
