@@ -52,7 +52,7 @@
                 <div class="col-3">
                     <input class="form-check-input" type="checkbox"  id="undersix"  value="TRUE" name="undersix">
                     <span style="margin-left: 2%;"></span>
-                    <label for="undersix">Présence d'enfant de moins de 6 ans </label>
+                    <label for="undersix">Présence d'enfants de moins de 6 ans </label>
 
                 </div>
             </div>

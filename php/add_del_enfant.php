@@ -8,7 +8,8 @@ if(isset($_POST['add_enfant'])){
     $postPrenom=$postData['input_prenom'];
     $postDdn=$postData['input_ddn'];
     $postNumDos= $_SESSION['numDos'] ;
-//foreach ($postData as $item) echo $item." ";
+foreach ($postData as $item) echo $item." ";
+
     $sqlQuery= "INSERT INTO enfant (niss,nom,prenom,date_naissance)
         VALUES (:niss,:nom,:prenom,:date_naissance)";
     $insertData = $pdo->prepare($sqlQuery);
@@ -28,10 +29,10 @@ if(isset($_POST['add_enfant'])){
     ]); 
 }
 /*
-if(isset($_POST['del_enfant'])){
+if(isset($_POST['del_enfant'])){}
     
-}
 */
 
 ?>
+
 <meta http-equiv="refresh" content="1; url=<?php echo $_SERVER["HTTP_REFERER"]  ; ?>" /> 

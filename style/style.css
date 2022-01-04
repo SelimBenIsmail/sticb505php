@@ -19,6 +19,12 @@ a>button,a>button:hover {
     color:white;
 }
 
+li> .btn_cstm {
+    margin: 0;
+    background-color: aqua;
+}
+
+
 a {
     text-decoration: none;
 }

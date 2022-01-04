@@ -38,7 +38,11 @@
                             $list->execute();
                             $result = $list->fetchAll();
                             foreach ($result as $item) 
-                                echo " <a href='./susbside_details.php'> <li class='list-group-item'>" . $item['num_dos'] . " | " . $item['date_demande'] . " | " . $item['statut']."</li> </a>";                                
+                                echo " <form action='../php/details.php' method='POST'> 
+                                    <li class='list-group-item'>
+                                        <button class='btn btn-outline-primary' value='$item[num_dos]' name='details'>" . $item['num_dos'] . " | " . $item['date_demande'] . " | " . $item['statut']." </button>
+                                    </li> 
+                                </form>";                                
                         }
                     ?>
                 </ul>

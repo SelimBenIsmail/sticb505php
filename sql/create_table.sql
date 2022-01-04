@@ -83,12 +83,12 @@ CREATE TABLE  demande_subside  (
 
 CREATE TABLE  decision  (
     numero_dossier  int PRIMARY KEY NOT NULL,
-    statut ENUM ('Accorde', 'Refuse', 'Non traité'),
+    statut ENUM ('Accordé', 'Refusé', 'Non traité'),
     id_agent_traitant  varchar(255),
     montant_subside  int,
     motivation_decision  varchar(255),
     FOREIGN KEY ( numero_dossier ) REFERENCES  demande_subside  ( numero_dossier ) ON DELETE CASCADE, 
-    FOREIGN KEY ( id_agent_traitant ) REFERENCES agentONE  ( niss ) 
+    FOREIGN KEY ( id_agent_traitant ) REFERENCES agent_one  ( niss ) 
 );
 
 

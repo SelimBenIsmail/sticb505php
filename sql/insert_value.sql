@@ -29,7 +29,7 @@ INSERT INTO responsable_unite  VALUES ('91033334976','Diego', 'Coussemens','Dieg
 INSERT INTO responsable_unite  VALUES ('94401134976','Yolan', 'Minlend','Yolan.Minlend@mail.com','0471276267',3,104);
 INSERT INTO responsable_unite  VALUES ('91555134976','Elise', 'Crouan','Elise.Crouan@mail.com','0471276267',3,105);
 
-INSERT INTO agent_one  VALUES ('91013334976','Mathias', 'ista','ista@mail.com','0471276267',1);
+INSERT INTO agent_one  VALUES ('91013334976','Mathias', 'Ista','ista@mail.com','0471276267',1);
 INSERT INTO agent_one  VALUES ('94421139976','Ozzy', 'Dardenne','Ozzy@mail.com','0471276267',2);
 INSERT INTO agent_one  VALUES ('91553174976','Nicolas', 'Labbe','Labbe@mail.com','0471276267',3);
 INSERT INTO agent_one  VALUES ('94678134976','Rejane', 'Hulet','Ozzy@mail.com','0471276267',4);
@@ -46,12 +46,6 @@ INSERT INTO demande_subside  VALUES (2,'2021-03-30','Non traité');
 INSERT INTO demande_subside  VALUES (3,'2021-03-30','Non traité');
 INSERT INTO demande_subside  VALUES (4,'2021-03-30','Non traité');
 INSERT INTO demande_subside  VALUES (5,'2021-03-30','Non traité');
-
-INSERT INTO decision (numero_dossier, statut, id_agent_traitant) VALUES (1,'Non traité','91013334976');
-INSERT INTO decision (numero_dossier, statut, id_agent_traitant) VALUES (2,'Non traité','94421139976');
-INSERT INTO decision (numero_dossier, statut, id_agent_traitant) VALUES (3,'Non traité','91553174976');
-INSERT INTO decision (numero_dossier, statut, id_agent_traitant) VALUES (4,'Non traité','94678134976');
-INSERT INTO decision (numero_dossier, statut, id_agent_traitant) VALUES (5,'Non traité','91553134976');
 
 INSERT INTO enfant_camp VALUES (1,'91081634978');
 INSERT INTO enfant_camp VALUES (1,'91081634976');

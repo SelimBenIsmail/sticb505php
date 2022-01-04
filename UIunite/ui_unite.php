@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="../style/style.css">
     <title> STIC-B-505 </title>
 </head>
-
-    <?php include '../header.php' ?>
-
+<?php include '../header.php' ?>
 
 <body>
     <div class="container-fluid">
@@ -36,7 +34,7 @@
                 <div>
                 <?php
                     if (isset($_SESSION['userLogged'])) {
-                        echo "<button class='btn btn-secondary'><a href='/php/stic-b-505/UIunite/unite_details.php'> Modifier les informations de l'unité</a> </button>";
+                        echo "<button class='btn btn-secondary'><a href='/php/stic-b-505/UIunite/unite_details.php'> Modifier les informations de contact </a> </button>";
                     }
                 ?>
                     </div>
