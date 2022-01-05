@@ -71,7 +71,12 @@
                         $listeCamps->execute();
                         $result = $listeCamps->fetchAll();
                         foreach ($result as $item) {
-                            echo "<li class='list-group-item'>" . $item['numero_dossier'] . " | " . $item['date_declaration'] . " | " . $item['denomination'] . "<span style='margin-left: 2cm;'></span> <button class='btn btn-secondary btn-sm'> <a href='./reponse.php'>Voir</a></button> </li>";
+                            echo "<li class='list-group-item'> 
+                                <form action='../php/reponse_details.php' method='POST'>
+                                    $item[date_declaration]  |  $item[numero_dossier]  |  $item[denomination]   <span style='margin-left:2cm;'> </span>     
+                                        <button class='btn btn-secondary btn-sm' value='$item[numero_dossier]' name='details'> Voir</button> 
+                                </form>
+                            </li>";
                         }
                     }
                     ?>

@@ -83,7 +83,7 @@ CREATE TABLE  demande_subside  (
 
 CREATE TABLE  decision  (
     numero_dossier  int PRIMARY KEY NOT NULL,
-    statut ENUM ('Accordé', 'Refusé', 'Non traité'),
+    statut varchar(255),
     id_agent_traitant  varchar(255),
     montant_subside  int,
     motivation_decision  varchar(255),
