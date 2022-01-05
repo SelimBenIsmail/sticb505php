@@ -21,10 +21,11 @@
             <div class="col-auto">
                 <?php
                 if (isset($_SESSION['numDos'])) {
-                    $sqlQuery = " SELECT date_demande, camp.denomination AS camp, camp.date_debut As debut, camp.date_fin AS fin, camp.frais_de_participation as frais
-                        FROM demande_subside 
+                    $sqlQuery = " SELECT date_demande, camp.denomination AS camp, camp.date_debut As debut, camp.date_fin AS fin, camp.frais_de_participation as frais, adresse.rue AS rue, adresse.numero_rue AS num_rue, adresse.code_postal as code_postal, adresse.commune AS commune
+                    FROM demande_subside 
                         INNER JOIN camp ON demande_subside.numero_dossier=camp.numero_dossier
-                        WHERE demande_subside.numero_dossier= $_SESSION[numDos]";
+                        INNER JOIN adresse ON camp.id_adresse = adresse.id_adresse
+                    WHERE demande_subside.numero_dossier= $_SESSION[numDos]";
                     $operation = $pdo->prepare($sqlQuery);
                     $operation->execute();
                     $data = $operation->fetch();
@@ -103,7 +104,7 @@
                     <p> <strong>Période: </strong> <?php if (null !== ($data['debut'] and $data['fin'])) echo " du $data[debut] au $data[fin]"; ?> </p>
                     <p> <strong>Nombre d'encadrants: </strong> <?php echo countEncadrant(); ?> </p>
                     <p> <strong>Frais de participation par enfant : </strong> <?php if (isset($data['frais'])) echo $data['frais'] . "€"; ?> </p>
-                    <p> <strong>Adresse :</strong> <?php ?> 20 Avenue Ernestine - 1050 Ixelles </p>
+                    <p> <strong>Adresse :</strong> <?php echo "$data[num_rue] $data[rue] - $data[code_postal] $data[commune]"?>  </p>
                 </div>
                 <p></p>
 

@@ -37,7 +37,7 @@ if(session_id()){
                         <label for="Denomination"> Connexion responsable d'unité </label>
                         <select class="form-select" name="uniteLogIn" >
                             <?php
-                            $sqlQuery = 'SELECT niss, nom, prenom FROM responsable_unite';
+                            $sqlQuery = 'SELECT niss, nom, prenom FROM responsable_unite ORDER BY num_agrement_unite';
                             $responsablesUnite = $pdo->prepare($sqlQuery);
                             $responsablesUnite->execute();
                             $result = $responsablesUnite->fetchAll();
@@ -60,7 +60,7 @@ if(session_id()){
                         <label for="Denomination"> Connexion agent ONE </label>
                         <select class="form-select" name="oneLogIn">
                             <?php
-                            $sqlQuery = 'SELECT niss, nom, prenom FROM agent_one';
+                            $sqlQuery = 'SELECT niss, nom, prenom FROM agent_one ORDER BY attribution';
                             $agentsOne = $pdo->prepare($sqlQuery);
                             $agentsOne->execute();
                             $result = $agentsOne->fetchAll();

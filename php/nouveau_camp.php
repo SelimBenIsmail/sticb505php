@@ -1,6 +1,7 @@
 <?php
     session_start();
     include 'connection.php';
+    include 'function.php'; 
 
     if (isset($_POST['submitNewCamp']))
     {
@@ -19,9 +20,19 @@
         if(isset($postData['undersix']))$postEnfantBasAge = 1;
         else $postEnfantBasAge=0;
 
+        $sqlQuery= "INSERT INTO adresse (rue, numero_rue,code_postal,commune) 
+        VALUES (:rue, :numero_rue,:code_postal,:commune)";
 
-        $sqlQuery= "INSERT INTO camp (denomination, date_declaration,frais_de_participation,date_debut,date_fin,presence_enfant_moins_6_ans,num_agrement_unite) 
-            VALUES (:denomination, :date_declaration,:frais_de_participation,:date_debut,:date_fin,:presence_enfant_moins_6_ans,:num_agrement_unite)";
+        $insertData = $pdo->prepare($sqlQuery);
+        $insertData->execute([
+            'rue'=> "$postRue",
+            'numero_rue'=>"$postRueNum",
+            'code_postal'=>"$postCodePostal",
+            'commune'=>"$postCommune"
+        ]);
+        $postIdAdresse = getIdAdresse();
+        $sqlQuery= "INSERT INTO camp (denomination, date_declaration, frais_de_participation, date_debut,date_fin, presence_enfant_moins_6_ans, num_agrement_unite, id_adresse) 
+            VALUES (:denomination, :date_declaration,:frais_de_participation,:date_debut,:date_fin,:presence_enfant_moins_6_ans,:num_agrement_unite,:id_adresse)";
 
         $insertData = $pdo->prepare($sqlQuery);
         $insertData->execute([
@@ -31,8 +42,11 @@
             'date_debut'=>"$postDateDebut",
             'date_fin'=>"$postDateFin",
             'presence_enfant_moins_6_ans'=>"$postEnfantBasAge",
-            'num_agrement_unite'=>"$postnumAgrementUnite"
+            'num_agrement_unite'=>"$postnumAgrementUnite",
+            'id_adresse'=>"$postIdAdresse"
         ]);
+
+
     }	
 
 ?>

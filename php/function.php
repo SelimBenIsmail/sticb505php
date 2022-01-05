@@ -1,6 +1,5 @@
 <?php
 
-
 function getNumDos ()
 {
     include 'connection.php';
@@ -12,6 +11,16 @@ function getNumDos ()
         $_SESSION['numDos'] =$result['numero_dossier'];
         //return $_SESSION['numDos'];
     }  
+}
+
+function getIdAdresse ()
+{
+    include 'connection.php';
+    $sqlQuery = "SELECT id_adresse FROM adresse ORDER BY id_adresse DESC LIMIT 1 " ;
+    $operation = $pdo->prepare($sqlQuery);
+    $operation->execute();
+    $result = $operation ->fetch();  
+    if(isset($result)) return $result['id_adresse'] ;
 }
 
 function countEnfant(){

@@ -8,7 +8,7 @@ if(isset($_POST['add_enfant'])){
     $postPrenom=$postData['input_prenom'];
     $postDdn=$postData['input_ddn'];
     $postNumDos= $_SESSION['numDos'] ;
-foreach ($postData as $item) echo $item." ";
+//foreach ($postData as $item) echo $item." ";
 
     $sqlQuery= "INSERT INTO enfant (niss,nom,prenom,date_naissance)
         VALUES (:niss,:nom,:prenom,:date_naissance)";

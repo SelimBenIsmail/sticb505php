@@ -3,10 +3,10 @@ session_start();
 include 'connection.php';
 if(isset($_POST['octroi'])){
     
-    echo $postNumDos = $_SESSION['numDos']; 
-    echo $postIdAgentTraitant = $_SESSION['userLogged'];
-    echo $postStatut = 'Accordé';
-    echo $postMontant = $_POST['montant'];
+    $postNumDos = $_SESSION['numDos']; 
+    $postIdAgentTraitant = $_SESSION['userLogged'];
+    $postStatut = 'Accordé';
+    $postMontant = $_POST['montant'];
     
     $sqlQuery= "INSERT INTO decision (numero_dossier, statut, id_agent_traitant, montant_subside) 
         VALUES (:numero_dossier, :statut, :id_agent_traitant, :montant_subside)";
