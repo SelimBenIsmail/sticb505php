@@ -82,7 +82,7 @@ if(session_id()){
     </body>
 <footer>
     <div style="padding-left:10px;"> <small><em> Ben Ismail Selim, Manfroy David</em> </small></div>
-    <div> <small><em> Travail réalisé dans la cadre du cours de Conception et gestion de banques de données Projet 2021-2022 </em> </small></div>
+    <div> <small><em> Travail réalisé dans le cadre du cours de Conception et gestion de banques de données, Projet 2021-2022 </em> </small></div>
     <div style="padding-right:10px;"> <small><em> Université Libre de Bruxelles</em> </small> </div>
 </footer>
 

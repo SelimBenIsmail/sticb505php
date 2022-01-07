@@ -47,6 +47,9 @@
                     ?>
                 </ul>
             </div>
+            <div class="col-5"></div>
+            <div class="col-2"> <a href="stat.php"> <button class="btn btn-secondary" > Analyse des données </button></a></div>
+            <div class="col-1"></div>
         </div>
     </div>
     <?php include '../jquery.php' ?>

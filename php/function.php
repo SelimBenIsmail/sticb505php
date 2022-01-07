@@ -74,5 +74,49 @@ function countExperienceBrevet(){
     if(isset($result))return $result['COUNT(*)'];
 }
 
+function getAveragePrice( $id_federation){
+    include 'connection.php';
+    $sqlQuery = " SELECT AVG  (frais_de_participation) AS avg
+            FROM camp 
+                INNER JOIN unite  ON camp.num_agrement_unite = unite.numero_agrement
+                INNER JOIN federation_mouvement_jeunesse AS federation ON unite.id_federation_mouvement_jeunesse = federation.id
+            WHERE federation.id = $id_federation" ;
+
+    $operation = $pdo->prepare($sqlQuery);
+    $operation->execute();
+    $result = $operation ->fetch();  
+
+    if(isset($result))return $result['avg'];
+}
+function countCamps( $id_federation){
+    include 'connection.php';
+    $sqlQuery = " SELECT COUNT(*) AS count
+            FROM camp 
+                INNER JOIN unite  ON camp.num_agrement_unite = unite.numero_agrement
+                INNER JOIN federation_mouvement_jeunesse AS federation ON unite.id_federation_mouvement_jeunesse = federation.id
+            WHERE federation.id = $id_federation" ;
+
+    $operation = $pdo->prepare($sqlQuery);
+    $operation->execute();
+    $result = $operation ->fetch();  
+
+    if(isset($result))return $result['count'];
+}
+function sumSubsides( $id_federation){
+    include 'connection.php';
+    $sqlQuery = " SELECT AVG  (frais_de_participation) 
+            FROM camp 
+                INNER JOIN unite  ON camp.num_agrement_unite = unite.numero_agrement
+                INNER JOIN federation_mouvement_jeunesse AS federation ON unite.id_federation_mouvement_jeunesse = federation.id
+            WHERE federation.id = $id_federation" ;
+
+    $operation = $pdo->prepare($sqlQuery);
+    $operation->execute();
+    $result = $operation ->fetch();  
+
+    if(isset($result))return $result;
+}
+
+
 ?>
 
