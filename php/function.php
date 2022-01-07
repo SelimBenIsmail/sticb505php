@@ -76,7 +76,7 @@ function countExperienceBrevet(){
 
 function getAveragePrice( $id_federation){
     include 'connection.php';
-    $sqlQuery = " SELECT AVG  (frais_de_participation) AS avg
+    $sqlQuery = " SELECT AVG(frais_de_participation) AS avg
             FROM camp 
                 INNER JOIN unite  ON camp.num_agrement_unite = unite.numero_agrement
                 INNER JOIN federation_mouvement_jeunesse AS federation ON unite.id_federation_mouvement_jeunesse = federation.id
@@ -90,11 +90,12 @@ function getAveragePrice( $id_federation){
 }
 function countCamps( $id_federation){
     include 'connection.php';
-    $sqlQuery = " SELECT COUNT(*) AS count
-            FROM camp 
-                INNER JOIN unite  ON camp.num_agrement_unite = unite.numero_agrement
-                INNER JOIN federation_mouvement_jeunesse AS federation ON unite.id_federation_mouvement_jeunesse = federation.id
-            WHERE federation.id = $id_federation" ;
+    $sqlQuery = "SELECT COUNT(*) AS count
+        FROM demande_subside
+            INNER JOIN camp ON demande_subside.numero_dossier = camp.numero_dossier
+            INNER JOIN unite  ON camp.num_agrement_unite = unite.numero_agrement
+            INNER JOIN federation_mouvement_jeunesse AS federation ON unite.id_federation_mouvement_jeunesse = federation.id
+        WHERE federation.id = $id_federation AND YEAR (demande_subside.date_demande) >= YEAR(NOW())-1" ;
 
     $operation = $pdo->prepare($sqlQuery);
     $operation->execute();
@@ -104,19 +105,19 @@ function countCamps( $id_federation){
 }
 function sumSubsides( $id_federation){
     include 'connection.php';
-    $sqlQuery = " SELECT AVG  (frais_de_participation) 
-            FROM camp 
-                INNER JOIN unite  ON camp.num_agrement_unite = unite.numero_agrement
-                INNER JOIN federation_mouvement_jeunesse AS federation ON unite.id_federation_mouvement_jeunesse = federation.id
-            WHERE federation.id = $id_federation" ;
+    $sqlQuery = " SELECT SUM(montant_subside) AS total
+        FROM decision
+            INNER JOIN demande_subside ON decision.numero_dossier = demande_subside.numero_dossier
+            INNER JOIN camp ON decision.numero_dossier = camp.numero_dossier
+            INNER JOIN unite  ON camp.num_agrement_unite = unite.numero_agrement
+            INNER JOIN federation_mouvement_jeunesse AS federation ON unite.id_federation_mouvement_jeunesse = federation.id
+        WHERE federation.id = $id_federation  AND YEAR (demande_subside.date_demande) >= YEAR(NOW())-1 " ;
 
     $operation = $pdo->prepare($sqlQuery);
     $operation->execute();
     $result = $operation ->fetch();  
-
-    if(isset($result))return $result;
+    if(isset($result))return $result['total'];
 }
-
 
 ?>
 
