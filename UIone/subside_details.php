@@ -73,14 +73,16 @@
                     <p> <strong>Date de dépot du dossier : </strong> <?php echo $data['date_demande']; ?> </p>
                     <p> <strong>Nombre d'enfants : </strong> <?php echo countEnfant(); ?></p>
                     <p> <strong>Nombre d'enfants de moins de 6 ans :</strong> <?php echo countEnfant6(); ?> </p>
-                    <p> <strong>Condition d'encadrement de quantité : </strong> <?php if ($condition1) echo "<span style='color: green ;' >Validé</span>";
-                                                                                else  echo "<span style='color: red ;' >Non validé</span>" ?> </p>
+                    <p> <strong>Condition d'encadrement de quantité : </strong> 
+                        <?php   if ($condition1) echo "<span style='color: green ;' >Validé</span>";
+                                else  echo "<span style='color: red ;' >Non validé</span>" 
+                        ?> 
+                    </p>
                     <p> <strong>Condition d'encadrement de qualité : </strong> <?php if ($condition2 and $condition3) echo "<span style='color: green ;'>Validé</span>";
                                                                                 else  echo "<span style='color: red ;' >Non validé</span>" ?> </p>
-
                 </div>
-                <p></p>
-           
+
+
             </div>
             <div class="col"></div>
             <div class="col-auto">
@@ -96,8 +98,9 @@
                     <p> <strong>Nombre d'encadrants: </strong> <?php echo countEncadrant(); ?> </p>
                     <p> <strong>Frais de participation par enfant : </strong> <?php if (isset($data['frais'])) echo $data['frais'] . "€"; ?> </p>
                     <p> <strong>Adresse :</strong> <?php echo "$data[num_rue] $data[rue] - $data[code_postal] $data[commune]" ?> </p>
+                    <p> <br></p> 
                 </div>
-               
+
             </div>
             <div class="col-1"></div>
         </div>
@@ -114,7 +117,7 @@
                     }
                     ?>
 
-                </ul>  
+                </ul>
             </div>
             <div class="col-auto"></div>
             <div class="col-5">
@@ -131,36 +134,38 @@
             <div class="col-1"></div>
         </div>
 
-    
+
 
         <div class="row" style="margin-top: 100px;">
             <div class="col-1"></div>
             <div class="col-1">
                 <button class="btn btn-secondary"> <a href="./ui_one.php"> Retour </a> </button>
             </div>
-            <div class="col-2">
-                <form action="../php/reponse_one.php" method="POST">
-                    <button class="btn btn-success" name="octroi">Accepter</button>
-                    <div class="form-group">
-                        <label for="montant"> Montant du subside :</label>
-                        <input type="text" class="form-control" name="montant" id="montant" required>
+            <div class="col-1"></div>
+            <form action="../php/reponse_one.php" method="POST">
+                <div class="form-row">
+                    <div class="col-auto">
+                        <button class="btn btn-success" name="octroi">Accepter</button>
                     </div>
-                </form>
-            </div>
-            <div class="col"></div>
-            <div class="col-4">
-                <form action="../php/reponse_one.php" method="POST">
-                    <button class="btn btn-danger" name="refus">refuser</button>
-                    <p></p>
-                    <div class="form-group">
-                        <label for="raison"> Raison du refus :</label>
-                        <textarea class="form-control" id="raison" name="raison" rows="3" required></textarea>
+                    <div class="col-auto">
+                        <input type="text" class="form-control" name="montant" id="montant" placeholder="Montant du subside" required>
                     </div>
-                </form>
-                <p></p>
-            </div>
+                </div>
+            </form>
+            <div class="col-1"></div>
+            <form action="../php/reponse_one.php" method="POST">
+                <div class="form-row">
+                    <div class="col-auto">
+                         <button class="btn btn-danger" name="refus">refuser</button>
+                    </div>
+                    <div class="col-auto">
+                        <textarea class="form-control" id="raison" name="raison" rows="3" style="width: 10cm;" placeholder="Raison du refus" required></textarea>
+                    </div>
+                </div>
+            </form>
             <div class="col-1"></div>
         </div>
+        <div class="row" style="margin-top:1cm;"></div>
     </div>
     <?php include '../jquery.php' ?>
 </body>
