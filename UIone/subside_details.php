@@ -73,23 +73,14 @@
                     <p> <strong>Date de dépot du dossier : </strong> <?php echo $data['date_demande']; ?> </p>
                     <p> <strong>Nombre d'enfants : </strong> <?php echo countEnfant(); ?></p>
                     <p> <strong>Nombre d'enfants de moins de 6 ans :</strong> <?php echo countEnfant6(); ?> </p>
-                    <p> <strong>Condition d'encadrement de quantité : </strong> <?php if ($condition1  ) echo "<span style='color: green ;' >Validé</span>";
+                    <p> <strong>Condition d'encadrement de quantité : </strong> <?php if ($condition1) echo "<span style='color: green ;' >Validé</span>";
                                                                                 else  echo "<span style='color: red ;' >Non validé</span>" ?> </p>
                     <p> <strong>Condition d'encadrement de qualité : </strong> <?php if ($condition2 and $condition3) echo "<span style='color: green ;'>Validé</span>";
                                                                                 else  echo "<span style='color: red ;' >Non validé</span>" ?> </p>
 
                 </div>
                 <p></p>
-                <ul class="list-group">
-                    <?php
-                    if (isset($listeEnfants)) {
-                        foreach ($listeEnfants as $item) {
-                            echo " <li class='list-group-item'>  $item[niss]  |  $item[nom]   $item[prenom] </li>";
-                        };
-                    }
-                    ?>
-
-                </ul>
+           
             </div>
             <div class="col"></div>
             <div class="col-auto">
@@ -104,10 +95,29 @@
                     <p> <strong>Période: </strong> <?php if (null !== ($data['debut'] and $data['fin'])) echo " du $data[debut] au $data[fin]"; ?> </p>
                     <p> <strong>Nombre d'encadrants: </strong> <?php echo countEncadrant(); ?> </p>
                     <p> <strong>Frais de participation par enfant : </strong> <?php if (isset($data['frais'])) echo $data['frais'] . "€"; ?> </p>
-                    <p> <strong>Adresse :</strong> <?php echo "$data[num_rue] $data[rue] - $data[code_postal] $data[commune]"?>  </p>
+                    <p> <strong>Adresse :</strong> <?php echo "$data[num_rue] $data[rue] - $data[code_postal] $data[commune]" ?> </p>
                 </div>
-                <p></p>
+               
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <p></p>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-5">
+                <ul class="list-group">
+                    <?php
+                    if (isset($listeEnfants)) {
+                        foreach ($listeEnfants as $item) {
+                            echo " <li class='list-group-item'>  $item[niss]  |  $item[nom]   $item[prenom] </li>";
+                        };
+                    }
+                    ?>
 
+                </ul>  
+            </div>
+            <div class="col-auto"></div>
+            <div class="col-5">
                 <ul class="list-group">
                     <?php
                     if (isset($listeEncadrants)) {
@@ -120,7 +130,9 @@
             </div>
             <div class="col-1"></div>
         </div>
-        <p></p>
+
+    
+
         <div class="row" style="margin-top: 100px;">
             <div class="col-1"></div>
             <div class="col-1">
