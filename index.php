@@ -17,7 +17,7 @@ if(session_id()){
 <header>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <a href="/php/stic-b-505/index.php"> <span class="navbar-brand mb-0 h1"> STIC-B505 </span></a>
+            <a href="/stic-b-505/index.php"> <span class="navbar-brand mb-0 h1"> STIC-B505 </span></a>
             <span> <strong> Déclaration d'activité des centres de vacances et demande de subside auprès de l'ONE </strong> </span>
             <span>
                 <?php include './php/connection.php'; ?>
@@ -32,7 +32,7 @@ if(session_id()){
     <div class="container" style="margin-top:10em;">
         <div class="row justify-content-center">
             <div class="col-3">
-                <form action="/php/stic-b-505/UIunite/ui_unite.php" method="post">
+                <form action="UIunite/ui_unite.php" method="post">
                     <div class="form-group">
                         <label for="Denomination"> Connexion responsable d'unité </label>
                         <select class="form-select" name="uniteLogIn" >
@@ -55,7 +55,7 @@ if(session_id()){
 
             <div class="col-2"></div>
             <div class="col-2">
-                <form action="/php/stic-b-505/UIone/ui_one.php" method="post">
+                <form action="UIone/ui_one.php" method="post">
                     <div class="form-group">
                         <label for="Denomination"> Connexion agent ONE </label>
                         <select class="form-select" name="oneLogIn">
