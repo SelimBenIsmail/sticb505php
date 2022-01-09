@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'connection.php';
+
 if(isset($_POST['add_enfant'])){
     $postData = $_POST;
     $postNiss=$postData['input_niss'];
@@ -28,11 +29,17 @@ if(isset($_POST['add_enfant'])){
         'niss_enfant'=>"$postNiss"
     ]); 
 }
-/*
-if(isset($_POST['del_enfant'])){}
-    
-*/
 
+if(isset($_POST['del_enfant'])){
+    $id=$_POST['del_enfant'];
+    $sqlQuery= "DELETE FROM enfant_camp WHERE niss_enfant= :id";
+    $insertData = $pdo->prepare($sqlQuery);
+    $insertData->execute([
+        'id' => "$id"
+    ]);
+}
+
+
+ 
 ?>
-
 <meta http-equiv="refresh" content="1; url=<?php echo $_SERVER["HTTP_REFERER"]  ; ?>" /> 

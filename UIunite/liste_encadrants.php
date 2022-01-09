@@ -33,7 +33,7 @@
                                 <th scope="col">Prénom</th>
                                 <th scope="col">Possession de brevet</th>
                                 <th scope="col">Expérience</th>
-                                <th scope="col"></th>
+                                <th scope="col"> </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,11 +52,14 @@
                                 $result = $list->fetchAll();
                                 foreach ($result as $item) {
                                     echo "<tr>
+                                    <form action='../php/add_del_encadrant.php' method='POST'> 
                                     <td> $item[niss] </td> 
                                     <td> $item[nom] </td> 
                                     <td> $item[prenom] </td> 
                                     <td> $item[brevet] </td> 
                                     <td> $item[experience] </td>  
+                                    <td> <button  class='btn btn-secondary btn-sm' name='del_encadrant' value='$item[niss]'> Supprimer </button> </td>
+                                    </form>
                                     </tr>";
                                 }
                             }

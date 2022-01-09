@@ -33,11 +33,18 @@ if(isset($_POST['add_encadrant'])){
         'niss_encadrant'=>"$postNiss"
     ]);
 }
-/*
+
 if(isset($_POST['del_encadrant'])){
+    $id=$_POST['del_encadrant'];
+    $sqlQuery= "DELETE FROM encadrant_camp WHERE niss_encadrant= :id";
+    $insertData = $pdo->prepare($sqlQuery);
+    $insertData->execute([
+        'id' => "$id"
+    ]);
+
     
 }
-*/
+
 
 ?>
 <meta http-equiv="refresh" content="1; url=<?php echo $_SERVER["HTTP_REFERER"]  ; ?>" /> 
