@@ -34,7 +34,7 @@
                 <div>
                 <?php
                     if (isset($_SESSION['userLogged'])) {
-                        echo "<button class='btn btn-secondary'><a href='/php/stic-b-505/UIunite/unite_details.php'> Modifier les informations de contact </a> </button>";
+                        echo "<button class='btn btn-secondary'><a href='/stic-b-505/UIunite/unite_details.php'> Modifier les informations de contact </a> </button>";
                     }
                 ?>
                     </div>
